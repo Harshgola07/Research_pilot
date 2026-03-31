@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply antialiased text-slate-900;
+    /* Optional: Use a more professional font stack if you have it */
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Make the markdown report feel crisp */
+.prose p {
+  @apply mb-6;
+}
