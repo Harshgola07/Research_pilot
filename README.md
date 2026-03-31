@@ -56,24 +56,24 @@ Follow these steps precisely to get the application running on your local machin
 **Part 1: Backend Setup**  
 Open a new terminal window and navigate to the root folder of the cloned repository.
 
-1. Navigate to the backend folder:
+1. Navigate to the backend folder:  
 `cd backend`
 
 2. Create and activate a Python Virtual Environment (venv):  
 
-On Windows:
-```
-python -m venv venv
-.\venv\Scripts\activate
-```
+    On Windows:
+    ```
+    python -m venv venv
+    .\venv\Scripts\activate
+    ```
 
-On macOS/Linux:
-```
-python3 -m venv venv
-source venv/bin/activate
-```
+    On macOS/Linux:
+    ```
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-3. Install backend dependencies:
+3. Install backend dependencies:  
 `pip install -r requirements.txt`
 
 4. Set up Environment Variables (.env):  
