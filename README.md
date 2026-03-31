@@ -9,72 +9,32 @@ https://github.com/user-attachments/assets/461fb952-3a3a-4cb6-8b29-51bcb529f0e4
 
 This application uses LangGraph to manage coordination between four specialized AI agents. The diagram below illustrates how information flows and how decision logic is applied, including the automatic research loop when data quality is low.
 
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e1f5fe', 'edgeLabelBackground':'#ffffff', 'tertiaryColor': '#fff'}}}%%
-graph TD
-    %% Define Nodes
-    Start((● Start))
-    Planner
-    Researcher
-    Critic
-    Decision{cite: Quality Check}
-    Writer
-    End((● End))
-
-    %% Define Node Styles
-    classDef agent fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,rx:10,ry:10;
-    classDef logic fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
-    classDef standard fill:#f5f5f5,stroke:#9e9e9e,stroke-width:1px;
-
-    class Planner,Researcher,Critic,Writer agent;
-    class Decision logic;
-    class Start,End standard;
-
-    %% Define Flow
-    Start -->|User Question| Planner
-    Planner -->|Sub-questions| Researcher
-    Researcher -->|Raw Sources| Critic
-    Critic -->|Scored Sources + Critique| Decision
-
-    %% Decision Logic (from graph.py after_critic)
-    Decision ==>|Avg Score >= 0.6| Writer
-    Decision -.->|Avg Score < 0.6 AND Loop < 3| Researcher
-    Decision ==>|Fallback/Loop Limit| Writer
-
-    Writer -->|Final Styled Report| End
-
-    %% Sub-graphs for context
-    subgraph "Web Tools"
-        Tavily
-    end
-    Researcher -.-> Tavily
-```
+<img width="388" height="765" alt="image" src="https://github.com/user-attachments/assets/d1ecadf5-9a3f-4111-ba2f-3f9087f6313f" />
 
 ## 📂 Repository Structure
 The project is split into a Python FastAPI backend and a React/Vite frontend.
 
-Plaintext
-research-app/
-├── backend/                  # Python FastAPI & LangGraph application
-│   ├── .env                  # Example environment variables
-│   ├── requirements.txt      # all backend dependencies
-│   ├── graph.py              # Main LangGraph workflow definition
-│   ├── server.py             # FastAPI server with SSE streaming
-│   └── agents/               # Individual specialized AI agents
-│       ├── __init__.py       # Makes 'agents' a Python package
-│       ├── planner.py        # Breaks down complex questions
-│       ├── researcher.py     # Performs targeted web searches (Tavily)
-│       ├── critic.py         # Grades source relevance and quality
-│       └── writer.py         # Compiles the final styled markdown report
-│
-└── frontend/                 # React frontend application
-    ├── src/
-    │   ├── App.jsx           # Main UI, logic, and streaming handler
-    │   ├── index.css         # Tailwind CSS entry point
-    │   └── main.jsx          # Vite entry point
-    ├── package.json
-    ├── tailwind.config.js    # Tailwind configuration (if using v3)
-    └── vite.config.js        # Vite configuration (with Tailwind v4 plugin)
+research-app/  
+├── backend/                  # Python FastAPI & LangGraph application  
+│   ├── .env                  # Example environment variables  
+│   ├── requirements.txt      # all backend dependencies  
+│   ├── graph.py              # Main LangGraph workflow definition  
+│   ├── server.py             # FastAPI server with SSE streaming  
+│   └── agents/               # Individual specialized AI agents  
+│       ├── __init__.py       # Makes 'agents' a Python package  
+│       ├── planner.py        # Breaks down complex questions  
+│       ├── researcher.py     # Performs targeted web searches (Tavily)  
+│       ├── critic.py         # Grades source relevance and quality  
+│       └── writer.py         # Compiles the final styled markdown report  
+│  
+└── frontend/                 # React frontend application  
+    ├── src/  
+    │   ├── App.jsx           # Main UI, logic, and streaming handler  
+    │   ├── index.css         # Tailwind CSS entry point  
+    │   └── main.jsx          # Vite entry point  
+    ├── package.json  
+    ├── tailwind.config.js    # Tailwind configuration (if using v3)  
+    └── vite.config.js        # Vite configuration (with Tailwind v4 plugin)  
 
 
 ## 🛠️ Prerequisites
