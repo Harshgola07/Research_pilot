@@ -13,7 +13,7 @@ This application uses LangGraph to manage coordination between four specialized 
 
 ## 📂 Repository Structure
 The project is split into a Python FastAPI backend and a React/Vite frontend.
-
+```
 research-app/  
 ├── backend/                  # Python FastAPI & LangGraph application  
 │   ├── .env                  # Example environment variables  
@@ -34,31 +34,32 @@ research-app/
     │   └── main.jsx          # Vite entry point  
     ├── package.json  
     ├── tailwind.config.js    # Tailwind configuration (if using v3)  
-    └── vite.config.js        # Vite configuration (with Tailwind v4 plugin)  
+    └── vite.config.js        # Vite configuration (with Tailwind v4 plugin)
+```
 
 
 ## 🛠️ Prerequisites
-Before running this application, ensure you have the following installed:
+Before running this application, ensure you have the following installed:  
 
--Python 3.10 or higher
--Node.js 18.x or higher
--npm (usually comes with Node.js)
+- Python 3.10 or higher
+- Node.js 18.x or higher
+- npm (usually comes with Node.js)
 
-You will also need:
+You will also need:  
 
--A Google Gemini API Key (for agent logic)
--A Tavily API Key (for web search capability)
+- A Google Gemini API Key (for agent logic)
+- A Tavily API Key (for web search capability)
 
-## 🚀 Step-by-Step Installation & Running
+## 🚀 Step-by-Step Installation & Running  
 Follow these steps precisely to get the application running on your local machine.
 
-**Part 1: Backend Setup**
+**Part 1: Backend Setup**  
 Open a new terminal window and navigate to the root folder of the cloned repository.
 
 1. Navigate to the backend folder:
 `cd backend`
 
-2. Create and activate a Python Virtual Environment (venv):
+2. Create and activate a Python Virtual Environment (venv):  
 
 On Windows:
 ```
@@ -75,7 +76,7 @@ source venv/bin/activate
 3. Install backend dependencies:
 `pip install -r requirements.txt`
 
-4. Set up Environment Variables (.env):
+4. Set up Environment Variables (.env):  
 Open the .env file and paste your API keys:
 ```
 GOOGLE_API_KEY = "your_gemini_key_here"
@@ -86,8 +87,8 @@ TAVILY_API_KEY = "your_tavily_key_here"
 `uvicorn server:app --reload`
 The backend is now running at http://localhost:8000. Keep this terminal open.
 
-**Part 2: Frontend Setup**
-Open a second terminal window. Navigate to the root folder of the repository again.
+**Part 2: Frontend Setup**  
+Open a second terminal window. Navigate to the root folder of the repository again.  
 
 1. Navigate to the frontend folder:
 `cd frontend`
@@ -101,9 +102,9 @@ Open a second terminal window. Navigate to the root folder of the repository aga
 
 ## 🖥️ Usage
 
--Open your browser to http://localhost:5173.
--You should see the "ResearchPilot" UI.
--Enter a complex research question (e.g., "What are the key technological hurdles for quantum computing scalability as of 2026?").
--Click Launch Research.
--Watch the Agent Pipeline widget animate live as the backend streams progress updates (Planner → Researcher → Critic → Writer).
--The final, fully styled "Executive Summary" report will appear below the pipeline once complete, including confidence grades and clean citations.
+- Open your browser to http://localhost:5173.   
+- You should see the "ResearchPilot" UI.  
+- Enter a complex research question (e.g., "What are the key technological hurdles for quantum computing scalability as of 2026?").  
+- Click Launch Research.  
+- Watch the Agent Pipeline widget animate live as the backend streams progress updates (Planner → Researcher → Critic → Writer).  
+- The final, fully styled "Executive Summary" report will appear below the pipeline once complete, including confidence grades and clean citations.  
